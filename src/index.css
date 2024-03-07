@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+} */
+input::-webkit-calendar-picker-indicator {
+  display: none !important;
+}
+
+@layer base {
+  html {
+    font-family: "Roboto", system-ui, sans-serif;
+  }
+}
+
+.task-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.task-status::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 100%;
+  background-color: #fba94c;
+}
