@@ -8,34 +8,25 @@ export function NewCycleForm() {
   const { register } = useFormContext();
 
   return (
-    <div className="flex flex-wrap justify-center items-center gap-2 w-full text-lg font-semibold">
+    <div className="flex flex-wrap justify-center items-center gap-2 w-full text-sm font-medium">
       <label htmlFor="task">I will work in</label>
       <input
         type="text"
         id="task"
-        list="task-suggestions"
+        autoComplete="off"
         disabled={!!activeCycle}
-        placeholder="Give your project a name"
-        className="flex flex-1 items-center gap-2 h-10 p-2 bg-transparent border-b-2 border-[#7C7C8A] text-center outline-none focus:border-purple-600 placeholder:text-[#7C7C8A]"
+        className="flex flex-1 items-center h-9 px-3 bg-transparent border border-gray rounded-lg outline-none transition-all focus:border-white"
         {...register("task")}
       />
-
-      <datalist id="task-suggestions">
-        <option value="projeto 1" />
-        <option value="projeto 2" />
-        <option value="projeto 3" />
-      </datalist>
 
       <label htmlFor="minutesAmount">for</label>
       <input
         type="number"
         id="minutesAmount"
-        step={5}
-        min={5}
+        min={1}
         max={60}
-        placeholder="00"
         disabled={!!activeCycle}
-        className="flex items-center gap-2 h-10 w-16 p-2 bg-transparent border-b-2 border-[#7C7C8A] text-center outline-none focus:border-purple-600 placeholder:text-[#7C7C8A]"
+        className="flex items-center h-9 w-12 bg-transparent border border-gray rounded-lg text-center outline-none transition-all focus:border-white placeholder:text-transparent"
         {...register("minutesAmount", { valueAsNumber: true })}
       />
 

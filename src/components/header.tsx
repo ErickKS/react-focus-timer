@@ -5,24 +5,33 @@ import clsx from "clsx";
 
 export function Header() {
   return (
-    <header className="flex justify-center items-center gap-5">
+    <header className="absolute top-10 left-1/2 -translate-x-1/2 flex p-1 w-fit bg-gray rounded-lg">
       <NavLink
         to="/"
         title="timer"
         className={clsx(
-          "flex justify-center items-center size-10 border-y-2 border-y-transparent text-[#E1E1E6] transition-all",
-          "hover:border-b-purple-600 hover:text-purple-600 aria-[current=page]:text-purple-600"
+          "flex justify-center items-center gap-2 h-8 px-4 rounded-md ring-2 ring-transparent outline-none transition-all",
+          "text-sm text-gray-light font-medium",
+          "aria-[current=page]:bg-black aria-[current=page]:text-white",
+          "focus-visible:ring-white hover:text-white"
         )}
       >
-        <Timer size={24} />
+        <Timer size={18} />
+        Timer
       </NavLink>
 
       <NavLink
         to="/history"
-        title="historic"
-        className="flex justify-center items-center size-10 border-y-2 border-y-transparent text-[#E1E1E6] transition-all hover:border-b-purple-600 hover:text-purple-600 aria-[current=page]:text-purple-600"
+        title="history"
+        className={clsx(
+          "flex justify-center items-center gap-2 h-8 px-4 rounded-md ring-2 ring-transparent outline-none transition-all",
+          "text-sm text-gray-light font-medium",
+          "aria-[current=page]:bg-black aria-[current=page]:text-white",
+          "focus-visible:ring-white hover:text-white"
+        )}
       >
-        <ScrollText size={24} />
+        <ScrollText size={18} />
+        History
       </NavLink>
     </header>
   );

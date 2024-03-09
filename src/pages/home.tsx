@@ -3,16 +3,16 @@ import { FormProvider, useForm } from "react-hook-form";
 import * as zod from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import clsx from "clsx";
-import { PauseOctagon, Play } from "lucide-react";
 
 import { CyclesContext } from "../context/cycles-context";
 
 import { NewCycleForm } from "../components/new-cycle-form";
 import { Countdown } from "../components/countdown";
+import { Button } from "../components/button";
 
 const newCycleFormValidationSchema = zod.object({
   task: zod.string().min(1, "Informe a tarefa"),
-  minutesAmount: zod.number().min(5, "The cycle must be a minimum of 5 minutes").max(60, "The cycle must be a maximum of 60 minutes"),
+  minutesAmount: zod.number().min(1, "The cycle must be a minimum of 5 minutes").max(60, "The cycle must be a maximum of 60 minutes"),
 });
 
 type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>;
@@ -36,42 +36,34 @@ export function HomePage() {
   }
 
   const task = watch("task");
-  const isSubmitDisabled = !task;
+  const minutesAmount = watch("minutesAmount");
+  const isSubmitDisabled = !task || !minutesAmount;
 
   return (
-    <main className="flex-1 flex flex-col justify-center items-center">
-      <form onSubmit={handleSubmit(handleCreateNewTask)} className="flex flex-col items-center gap-14">
-        <FormProvider {...newCycleForm}>
-          <NewCycleForm />
-        </FormProvider>
+    <main className="relative flex flex-1 justify-center items-center">
+      <form onSubmit={handleSubmit(handleCreateNewTask)} className="flex-1 flex flex-col items-center gap-16">
+        <div className={clsx("transition-all duration-75", { "opacity-0": activeCycle })}>
+          <FormProvider {...newCycleForm}>
+            <NewCycleForm />
+          </FormProvider>
+        </div>
 
-        <Countdown />
+        <div className="flex justify-between items-center gap-2 w-full">
+          <img src="./lines.svg" alt="" />
+
+          <Countdown />
+
+          <img src="./lines.svg" alt="" />
+        </div>
 
         {activeCycle ? (
-          <button
-            type="button"
-            onClick={interruptCurrentCycle}
-            className={clsx(
-              "flex items-center justify-center gap-2 h-16 w-full px-4 font-semibold bg-red-600 rounded-lg transition-all",
-              "hover:bg-red-700"
-            )}
-          >
-            <PauseOctagon />
+          <Button type="button" onClick={interruptCurrentCycle} variant="secondary">
             Interrupt
-          </button>
+          </Button>
         ) : (
-          <button
-            type="submit"
-            disabled={isSubmitDisabled}
-            className={clsx(
-              "flex items-center justify-center gap-2 h-16 w-full px-4 font-semibold bg-purple-600 rounded-lg transition-all",
-              "disabled:cursor-not-allowed disabled:opacity-70",
-              "hover:bg-purple-700"
-            )}
-          >
-            <Play />
+          <Button type="submit" disabled={isSubmitDisabled} variant="primary">
             Start
-          </button>
+          </Button>
         )}
       </form>
     </main>

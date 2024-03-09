@@ -46,14 +46,26 @@ export function Countdown() {
   }, [activeCycle, minutes, seconds]);
 
   return (
-    <div className="flex gap-4 font-['Roboto_Mono'] text-[10rem] leading-[8rem]">
-      <span className="bg-zinc-800 py-8 px-4 rounded-lg">{minutes[0]}</span>
-      <span className="bg-zinc-800 py-8 px-4 rounded-lg">{minutes[1]}</span>
+    <div className="flex items-center gap-4">
+      <div className="flex flex-col justify-center items-center size-32 p-4 border border-gray rounded-xl font-medium">
+        <div className="flex text-center text-6xl leading-none">
+          <span className="w-11">{minutes[0]}</span>
+          <span className="w-11">{minutes[1]}</span>
+        </div>
 
-      <div className="flex justify-center w-16 py-8 text-purple-600 overflow-hidden">:</div>
+        <span className="text-sm text-gray-light">MIN</span>
+      </div>
 
-      <span className="bg-zinc-800 py-8 px-4 rounded-lg">{seconds[0]}</span>
-      <span className="bg-zinc-800 py-8 px-4 rounded-lg">{seconds[1]}</span>
+      <div className="relative -top-0.5 mx-1 text-xl font-bold">:</div>
+
+      <div className="flex flex-col justify-center items-center size-32 p-4 border border-gray rounded-xl font-medium">
+        <div className="flex text-center text-6xl leading-none">
+          <span className="w-11">{seconds[0]}</span>
+          <span className="w-11">{seconds[1]}</span>
+        </div>
+
+        <span className="text-sm text-gray-light">SEC</span>
+      </div>
     </div>
   );
 }

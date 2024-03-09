@@ -2,16 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* input[type="number"]::-webkit-inner-spin-button {
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 1.2rem;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
-} */
+}
 input::-webkit-calendar-picker-indicator {
   display: none !important;
 }
 
 @layer base {
   html {
-    font-family: "Roboto", system-ui, sans-serif;
+    font-family: "Poppins", system-ui, sans-serif;
   }
 }
 

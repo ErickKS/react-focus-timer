@@ -15,7 +15,7 @@ export function TaskStatus({ status }: TaskStatusProps) {
         { "before:bg-[#AB222E]": status === "interrupted" }
       )}
     >
-      {status === "concluded" && "concluded"}
+      {status === "concluded" && "Concluded"}
       {status === "in-progress" && "In Progress"}
       {status === "interrupted" && "Interrupted"}
     </span>
