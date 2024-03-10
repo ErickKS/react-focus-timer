@@ -15,7 +15,7 @@ export default {
     },
     extend: {
       backgroundImage: {
-        "img-cover": "url('./background.png')",
+        "img-cover": "url('/background.png')",
       },
     },
   },
