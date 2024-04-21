@@ -11,7 +11,7 @@
 <br/>
 
 <div align="center">
-    <img src="./.github/readme.gif" alt="project gif" height="400px"/>
+    <img src="./.github/readme-gif.gif" alt="project gif" height="400px"/>
       <h3 align="center">
         <strong>
             <a href="https://react-focus-timer.vercel.app">live demo</a>
